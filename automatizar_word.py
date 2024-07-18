@@ -12,10 +12,13 @@ telefono = "(011) 42422600"
 correo = "christianburns03@gmail.com"
 fecha = datetime.today().strftime("%d/%m/%Y")
 
+# Definición de datos constantes
 constantes = {'nombre': nombre, 'telefono': telefono, 'correo': correo, 'fecha': fecha}
 
+# Cargar datos desde un archivo Excel
 df = pd.read_excel('Alumnos.xlsx')
 
+# Iteración sobre filas del DataFrame
 for indice, fila in df.iterrows():
     contenido = {
         'nombre_alumno':fila["Nombre del Alumno"],
@@ -28,8 +31,6 @@ for indice, fila in df.iterrows():
     doc.render(contenido)
     doc.save(f"Notas_de_{fila['Nombre del Alumno']}.docx")
     print(contenido)
-
-
 
 # Renderizar y guardar el documento
 doc.render(constantes)
